@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 line = "=================================================================================="
 
@@ -34,3 +35,19 @@ print("Printing data from specific location")
 
 print(data_frame.iloc[5, 1])
 
+print(line)
+print("Printing data column contains specific data")
+
+print(data_frame.loc[data_frame['Type 1'] == 'Fire'])
+
+#data_frame.to_csv('modified.csv', index=False)
+
+#data_frame.to_excel('excel_mod.xlsx', index=False)
+
+#data_frame.to_csv('data_txt.txt', index=False, sep='\t')
+
+print(line)
+print("regex")
+
+print(data_frame.loc[data_frame['Type 1'].str.contains('fire|grass', flags=re.I, regex=True)])
+print(data_frame.loc[data_frame['Name'].str.contains('^pi[a-z]*', flags=re.I, regex=True)])
